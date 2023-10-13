@@ -4,17 +4,13 @@ import bakiev.example.obfuscation.network.api.GithubService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
+import okhttp3.OkHttpClient
 
 @Module
 class AppModule {
     @Singleton
     @Provides
     fun provideGithubService(): GithubService {
-        return GithubService.provideGithubService()
-//        return Retrofit.Builder()
-//            .baseUrl("https://api.github.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(GithubService::class.java)
+        return GithubService.provideGithubService(OkHttpClient())
     }
 }
